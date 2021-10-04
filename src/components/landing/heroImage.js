@@ -6,23 +6,23 @@ const HeroImage = () => {
       
 
 const data = useStaticQuery(graphql`
-query heroImageQuery {
-  allImageSharp(filter: {id: {in: "182063df-7cc9-5146-889b-032d651c3899"}}) {
+query MyQuery {
+  allImageSharp(filter: {id: {in: "a3ca096a-199d-527a-bdd5-8464009e34ce"}}) {
     edges {
       node {
         id
-        gatsbyImageData( placeholder: BLURRED)
-       
+        gatsbyImageData
       }
     }
   }
 }
+
 `)
 
-// const image = getImage(data.allImageSharp.edges[0].node)
+const image = getImage(data.allImageSharp.edges[0].node)
     return (
-      <></>
-        // <GatsbyImage image={image} alt="bleh" style={{width: `100%`,  maxHeight: `100%`}}/>
+   
+       <GatsbyImage image={image} alt="bleh" style={{width: `100%`,  maxHeight: `100%`}}/>
      
     )
 }

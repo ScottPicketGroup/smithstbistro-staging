@@ -117,6 +117,7 @@ const EmailInput = styled.input`
   height: 2.2rem;
   border: 1px solid white;
   background: none;
+  color: white;
    margin-top: 1.25rem;
    ::placeholder {
        color: white;
