@@ -7,11 +7,13 @@ const HeroImage = () => {
 
 const data = useStaticQuery(graphql`
 query MyQuery {
-  allImageSharp(filter: {id: {in: "a3ca096a-199d-527a-bdd5-8464009e34ce"}}) {
+  allFile(filter: {name: {in: "hero"}}) {
     edges {
       node {
         id
-        gatsbyImageData
+        childImageSharp {
+          gatsbyImageData
+        }
       }
     }
   }
@@ -19,7 +21,7 @@ query MyQuery {
 
 `)
 
-const image = getImage(data.allImageSharp.edges[0].node)
+const image = getImage(data.allFile.edges[0].node)
     return (
    
        <GatsbyImage image={image} alt="bleh" style={{width: `100%`,  maxHeight: `100%`}}/>
