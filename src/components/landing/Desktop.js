@@ -19,7 +19,7 @@ const DesktopPage = () => {
           </p>
           <h1>Opening Summer</h1>
           <p>
-            <strong>INFO@SMITHSTREETBISTROOT.COM.AU</strong>
+            <strong>INFO@SMITHSTREETBISTROT.COM.AU</strong>
           </p>
         </TopContainer>
         <ImgContainer>
