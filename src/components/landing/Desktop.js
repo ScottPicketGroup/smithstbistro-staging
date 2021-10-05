@@ -111,11 +111,17 @@ const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 45%;
+  :hover {
+    cursor: pointer;
+}
 `;
 
 const SignupContainer = styled.div`
   width: 88%;
   height: auto;
+  :hover {
+    cursor: pointer;
+}
   @media screen and (max-width: 450px) {
     width: 100%;
     padding: 0;
