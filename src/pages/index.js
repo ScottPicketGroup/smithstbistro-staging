@@ -6,64 +6,21 @@ import Logo from "../images/logo"
 import { useIsSsr } from "../components/isSsr"
 import HeroImage from "../components/landing/heroImage"
 import SignUpModal from "../components/landing/signUpModal/SignUpModal"
+import DesktopPage from "../components/landing/Desktop"
+import MobilePage from "../components/landing/Mobile"
 
 const IndexPage = () => {
   const isSsr = useIsSsr()
   const checkSsr = (isSsr) => {if(isSsr) return null }
   checkSsr(isSsr)
-  const [modalOpen, setModalOpen] = React.useState(false)
+  
 
   return (
     <React.Fragment>
       <GlobalStyle />
       <Seo title="Smith St Bistrot" />
-      <PageContainer>
-        <TopContainer>
-          <p>
-
-          <strong>
-          300 SMITH STREET, COLLINGWOOD
-            </strong>
-          </p>
-          <h1>Opening Summer</h1>
-          <p>
-            <strong>
-            INFO@SMITHSTREETBISTROOT.COM.AU
-            </strong>
-            </p>
-
-        </TopContainer>
-        <ImgContainer>
-     <HeroImage />
-      <Logo/>
-        </ImgContainer>
-        <BottomContainer>
-          <h1>Wine & Food</h1>
-          <SignUpWrapper onClick={() => setModalOpen(!modalOpen)}
-          >
-          <p
-            style={{
-              textAlign: `center`,
-              borderBottom: `red 1px solid`,
-            }}
-          >
-            Sign up for updates from the Scott Pickett Group and {" "}
-          </p>
-          <p
-            style={{
-              textAlign: `center`,
-              borderBottom: `red 1px solid`,
-            }}
-          >
-            for exclusive
-            first access to bookings
-          </p>
-          </SignUpWrapper>
-          <h1>French etc.</h1>
-        </BottomContainer>
-        
-      </PageContainer>
-      <SignUpModal modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+      <DesktopPage />
+      <MobilePage />
     </React.Fragment>
   )
 }

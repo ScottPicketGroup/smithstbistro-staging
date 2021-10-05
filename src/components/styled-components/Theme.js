@@ -58,13 +58,14 @@ font-family: 'Times';
 
   @media screen and (max-width: 450px) {
     h1 {
-        font-size: 1.25rem;
-        line-height: 1.2;
+        font-size: 1rem;
+        font-weight: 300;
         
     }
     p {
-        font-size: 1rem;
+        font-size: .75rem;
         line-height: 1.25;
+        color: black;
     }
     
 }
