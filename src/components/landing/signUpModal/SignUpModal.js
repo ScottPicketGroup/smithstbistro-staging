@@ -25,6 +25,7 @@ const SignUpModal = ({ modalOpen, setModalOpen }) => {
     var raw = JSON.stringify({
       data: {
         email: email,
+        tags: 'smith street bistro'
       },
     });
 
