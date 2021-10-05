@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../images/logo";
 import HeroImage from "./heroImage";
 import styled from "styled-components";
-import SignUpModal from "./signUpModal/SignUpModal";
+import MobileSignUpModal from "./signUpModal/MobileSignUpModal";
 import { useStaticQuery, graphql } from "gatsby";
 
 const MobilePage = () => {
@@ -69,7 +69,7 @@ const MobilePage = () => {
               alignItems: `center`
           }}>
           <p
-          style={{paddingBottom: `.5rem`}}
+          style={{marginBottom: `.5rem`}}
           >
             300 SMITH STREET, COLLINGWOOD
           </p>
@@ -79,7 +79,7 @@ const MobilePage = () => {
           </div>
         </BottomContainer>
       </PageContainer>
-      <SignUpModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <MobileSignUpModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </MobileWrapper>
   );
 };
@@ -136,6 +136,9 @@ const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  :hover {
+      cursor: pointer;
+  }
 `;
 
 const SignupContainer = styled.div`
