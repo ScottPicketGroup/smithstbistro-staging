@@ -6,7 +6,7 @@ import CloseIcon from "./CloseIcon";
 
 const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
   const [email, setEmail] = React.useState("")
-  const [emailPlaceHolder, setEmailPlaceholder] = React.useState(true)
+  const [submitted, setSubmitted] = React.useState(false)
   const handleChange = event => {
     setEmail(event.target.value)
   
@@ -40,11 +40,11 @@ const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
         .then(response => response.json())
         .then(result => console.log(result))
      
-        .then(setEmailPlaceholder(false))
+        
         
         .catch(error => console.log("error", error))
 
-
+setSubmitted(true)
   }
   return (
     <ModalContainer modalOpen={modalOpen}>
@@ -63,12 +63,22 @@ const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
         </LogoWrapper>
 
         <SignUpWrapper onSubmit={handleSubmit}>
-          <p>
+       
+         {
+           submitted ? (
+             <ThankYouWrapper>
+             <h1>Thank you very much!</h1>
+             <p> We will update you soon with all the latest news!</p>
+             </ThankYouWrapper>
+           ) :
+           (
+             <>
+            <p>
             Sign up for updates from the Scott Pickett Group and for exclusive
             first access to bookings
           </p>
-          <SignUpForm>
-            <EmailInput placeholder={emailPlaceHolder ? `Email*` : `Thank you, your email has been added to our list!`}
+            <SignUpForm>
+            <EmailInput placeholder="Email*"
         
             name="email"
             type="text"
@@ -77,6 +87,9 @@ const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
             />
             <SignUpButton  type="submit" onClick={handleSubmit}>SUBMIT</SignUpButton>
           </SignUpForm>
+          </>
+           )
+         }
           
         </SignUpWrapper>
         <BottomWrapper>
@@ -177,6 +190,17 @@ const SignUpWrapper = styled.form`
     color: white;
   }
 `;
+const ThankYouWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+padding: 1rem;
+margin-top: -5vh;
+height: 10vh;
+animation: ${xFadeIn} 150ms ease-in-out;
+
+`
 const SignUpForm = styled.div`
   display: flex;
   flex-direction: column;
