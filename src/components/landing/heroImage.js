@@ -23,7 +23,7 @@ const HeroImage = ({  device }) => {
       `}
       render={data => (
         <GatsbyImage
-        image={getImage(data.allFile.edges[0].node)}
+        image={getImage(data.allFile.edges[0].node.childImageSharp)}
         alt="bleh"
         style={{ width: `100%`, maxHeight: `100%`, aspectRatio: device === 'mob' ? `1/1` : ``}}
         

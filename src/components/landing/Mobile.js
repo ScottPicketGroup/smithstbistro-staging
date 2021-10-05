@@ -6,20 +6,7 @@ import MobileSignUpModal from "./signUpModal/MobileSignUpModal";
 import { useStaticQuery, graphql } from "gatsby";
 
 const MobilePage = () => {
-//   const data = useStaticQuery(graphql`
-//     query heroImageMob {
-//       allFile(filter: { name: { in: "heroMob" } }) {
-//         edges {
-//           node {
-//             id
-//             childImageSharp {
-//               gatsbyImageData
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
+
 
   const [modalOpen, setModalOpen] = React.useState(false);
   return (
@@ -40,7 +27,7 @@ const MobilePage = () => {
          
         </TopContainer>
         <ImgContainer>
-          {/* <HeroImage data={data} device="mob"/> */}
+          <HeroImage device="mob"/>
           
         </ImgContainer>
         <BottomContainer>
