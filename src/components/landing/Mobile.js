@@ -63,7 +63,11 @@ const MobilePage = () => {
              and{" "} for exclusive first access to bookings
             </p>
           </SignUpWrapper>
-          <div>
+          <div style={{
+              display: `flex`,
+              flexDirection: `column`,
+              alignItems: `center`
+          }}>
           <p
           style={{paddingBottom: `.5rem`}}
           >

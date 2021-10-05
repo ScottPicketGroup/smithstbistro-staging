@@ -15,3 +15,4 @@ const HeroImage = ({ data, device }) => {
 };
 
 export default HeroImage;
+
