@@ -104,7 +104,7 @@ setSubmitted(true)
             300 SMITH STREET, COLLINGWOOD
           </p>
           <p>
-            INFO@SMITHSTREETBISTROT.COM.AU
+         ><a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTTBISTROT.COM.AU</a>
           </p>
           </div>
         </BottomWrapper>

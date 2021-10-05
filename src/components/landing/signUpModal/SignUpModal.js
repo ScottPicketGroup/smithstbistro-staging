@@ -53,7 +53,7 @@ const SignUpModal = ({ modalOpen, setModalOpen }) => {
           </p>
           <h1>Opening Summer</h1>
           <p>
-          <strong><a href="mailto:info@smithstreetbistrot.com.au">INFO@SMITHSTREETBISTROT.COM.AU</a></strong>
+          <strong><a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTTBISTROT.COM.AU</a></strong>
           </p>
         </TopWrapper>
         <LogoWrapper>
