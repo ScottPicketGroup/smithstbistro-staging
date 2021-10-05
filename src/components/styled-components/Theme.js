@@ -47,7 +47,9 @@ font-family: 'Times';
      
       
       margin-bottom: 0;
-     
+     a {
+         color: inherit;
+     }
   }
   /* button {
       font-family: UntitledSansRegular;

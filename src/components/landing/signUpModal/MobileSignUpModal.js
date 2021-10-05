@@ -5,7 +5,47 @@ import HeroImage from "../heroImage";
 import CloseIcon from "./CloseIcon";
 
 const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
-  console.log(`modalOpen`, modalOpen);
+  const [email, setEmail] = React.useState("")
+  const [emailPlaceHolder, setEmailPlaceholder] = React.useState(true)
+  const handleChange = event => {
+    setEmail(event.target.value)
+  
+  }
+  const handleSubmit = e => {
+    e.preventDefault()
+    const timestamp = Date.now()
+   
+      var myHeaders = new Headers()
+      myHeaders.append(
+        "Authorization",
+        "Bearer 25183d2e-1266-4207-a9d3-a5d9422d94b0"
+      )
+      myHeaders.append("Timestamp", { timestamp })
+      myHeaders.append("Content-Type", "application/json")
+
+      var raw = JSON.stringify({
+        data: {
+          email: email,
+        },
+      })
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      }
+
+      fetch("https://api.sproutsend.com/contacts?", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+     
+        .then(setEmailPlaceholder(false))
+        
+        .catch(error => console.log("error", error))
+
+
+  }
   return (
     <ModalContainer modalOpen={modalOpen}>
       <CloseIcon setModalOpen={setModalOpen} />
@@ -22,15 +62,22 @@ const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
           <Logo height="80%" />
         </LogoWrapper>
 
-        <SignUpWrapper>
+        <SignUpWrapper onSubmit={handleSubmit}>
           <p>
             Sign up for updates from the Scott Pickett Group and for exclusive
             first access to bookings
           </p>
           <SignUpForm>
-            <EmailInput placeholder="Email*" />
+            <EmailInput placeholder={emailPlaceHolder ? `Email*` : `Thank you, your email has been added to our list!`}
+        
+            name="email"
+            type="text"
+            value={email}
+            onChange={handleChange}
+            />
+            <SignUpButton  type="submit" onClick={handleSubmit}>SUBMIT</SignUpButton>
           </SignUpForm>
-          <SignUpButton>SUBMIT</SignUpButton>
+          
         </SignUpWrapper>
         <BottomWrapper>
         <div style={{
@@ -44,7 +91,7 @@ const MobileSignUpModal = ({ modalOpen, setModalOpen }) => {
             300 SMITH STREET, COLLINGWOOD
           </p>
           <p>
-            INFO@SMITHSTREETBISTROOT.COM.AU
+            INFO@SMITHSTREETBISTROT.COM.AU
           </p>
           </div>
         </BottomWrapper>
@@ -117,7 +164,7 @@ const LogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const SignUpWrapper = styled.div`
+const SignUpWrapper = styled.form`
   display: flex;
   flex-direction: column;
 

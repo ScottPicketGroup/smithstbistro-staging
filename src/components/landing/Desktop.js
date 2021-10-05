@@ -1,5 +1,4 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import Logo from "../../images/logo";
 import HeroImage from "./heroImage";
 import styled from "styled-components";
@@ -7,7 +6,6 @@ import SignUpModal from "./signUpModal/SignUpModal";
 
 const DesktopPage = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
-
 
 
   return (
@@ -19,7 +17,7 @@ const DesktopPage = () => {
           </p>
           <h1>Opening Summer</h1>
           <p>
-            <strong>INFO@SMITHSTREETBISTROT.COM.AU</strong>
+            <strong><a href="mailto:info@smithstreetbistrot.com.au">INFO@SMITHSTREETBISTROT.COM.AU</a></strong>
           </p>
         </TopContainer>
         <ImgContainer>
