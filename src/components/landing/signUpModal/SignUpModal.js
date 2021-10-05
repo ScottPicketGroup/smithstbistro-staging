@@ -1,14 +1,51 @@
 import React from "react";
-import styled, { keyframes }  from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "../../../images/logo";
 import HeroImage from "../heroImage";
 import CloseIcon from "./CloseIcon";
 
-const SignUpModal = ({modalOpen, setModalOpen}) => {
-    console.log(`modalOpen`, modalOpen)
+const SignUpModal = ({ modalOpen, setModalOpen }) => {
+  const [email, setEmail] = React.useState("");
+  const [submitted, setSubmitted] = React.useState(false);
+  const handleChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const timestamp = Date.now();
+
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "Bearer 25183d2e-1266-4207-a9d3-a5d9422d94b0"
+    );
+    myHeaders.append("Timestamp", { timestamp });
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      data: {
+        email: email,
+      },
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://api.sproutsend.com/contacts?", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+
+      .catch((error) => console.log("error", error));
+
+    setSubmitted(true);
+  };
   return (
     <ModalContainer modalOpen={modalOpen}>
-        <CloseIcon setModalOpen={setModalOpen}/>
+      <CloseIcon setModalOpen={setModalOpen} />
       <ContentWrapper>
         <TopWrapper>
           <p>
@@ -16,25 +53,42 @@ const SignUpModal = ({modalOpen, setModalOpen}) => {
           </p>
           <h1>Opening Summer</h1>
           <p>
-            <strong>INFO@SMITHSTREETBISTROT.COM.AU</strong>
+          <strong><a href="mailto:info@smithstreetbistrot.com.au">INFO@SMITHSTREETBISTROT.COM.AU</a></strong>
           </p>
         </TopWrapper>
         <LogoWrapper>
-        <Logo height="80%"/>
+          <Logo height="80%" />
         </LogoWrapper>
         <BottomWrapper>
-        <h1>Wine & Food</h1>
-        <h1>French etc.</h1>
+          <h1>Wine & Food</h1>
+          <h1>French etc.</h1>
         </BottomWrapper>
         <SignUpWrapper>
-          <p>
-            Sign up for updates from the Scott Pickett Group and for exclusive
-            first access to bookings
-          </p>
-          <SignUpForm>
-            <EmailInput placeholder="Email*"/>
-          </SignUpForm>
-          <SignUpButton>SUBMIT</SignUpButton>
+          {submitted ? (
+            <ThankYouWrapper>
+              <h1>Thank you very much!</h1>
+              <p> We will update you soon with all the latest news!</p>
+            </ThankYouWrapper>
+          ) : (
+            <>
+              <p>
+                Sign up for updates from the Scott Pickett Group and for
+                exclusive first access to bookings
+              </p>
+              <SignUpForm>
+                <EmailInput
+                  placeholder="Email*"
+                  name="email"
+                  type="text"
+                  value={email}
+                  onChange={handleChange}
+                />
+                <SignUpButton type="submit" onClick={handleSubmit}>
+                  SUBMIT
+                </SignUpButton>
+              </SignUpForm>
+            </>
+          )}
         </SignUpWrapper>
       </ContentWrapper>
     </ModalContainer>
@@ -42,7 +96,6 @@ const SignUpModal = ({modalOpen, setModalOpen}) => {
 };
 
 export default SignUpModal;
-
 
 export const xFadeIn = keyframes`
   0% {
@@ -52,7 +105,7 @@ export const xFadeIn = keyframes`
   100% {
     opacity: 1;
     display: flex;}
-`
+`;
 const ModalContainer = styled.div`
   position: absolute;
   z-index: 2;
@@ -60,14 +113,16 @@ const ModalContainer = styled.div`
   height: 100vh;
   width: 100vw;
   background: #640002;
-  display: ${props => props.modalOpen === true ? `flex` : `none`};
+  
+  display: ${(props) => (props.modalOpen === true ? `flex` : `none`)};
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   animation: ${xFadeIn} 150ms ease-out;
 `;
 const ContentWrapper = styled.div`
-  width: 83%;
+margin-top: 10%;  
+width: 83%;
   justify-content: center;
   align-items: center;
 `;
@@ -89,27 +144,26 @@ const LogoWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 8rem;
   justify-content: center;
-
 `;
 
 const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
-margin-top: 1rem;
+  margin-top: 1rem;
   align-items: center;
   width: 100%;
-  p{
-      font-size: 90%;
-      width: 45%;
-      text-align: center;
-      color: white;
+  p {
+    font-size: 90%;
+    width: 45%;
+    text-align: center;
+    color: white;
   }
 `;
 const SignUpForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: .75rem;
+  margin-top: 0.75rem;
   width: 45%;
 `;
 const EmailInput = styled.input`
@@ -118,17 +172,17 @@ const EmailInput = styled.input`
   border: 1px solid white;
   background: none;
   color: white;
-   margin-top: 1.25rem;
-   ::placeholder {
-       color: white;
-       /* padding: 1rem; */
-       font-size: 1rem;
-   }
-   :focus {
+  margin-top: 1.25rem;
+  ::placeholder {
+    color: white;
+    /* padding: 1rem; */
+    font-size: 1rem;
+  }
+  :focus {
     outline: none;
     background: transparent;
     color: white;
-   
+
     font-size: 125%;
   }
   :valid {
@@ -145,10 +199,21 @@ const EmailInput = styled.input`
 const SignUpButton = styled.button`
   background: white;
   border: none;
-  padding: .25rem 1.75rem;
+  padding: 0.25rem 1.75rem;
   margin-top: 1.75rem;
   font-family: Pitch1;
   font-size: 1rem;
   font-weight: 900;
   margin-bottom: 4.75rem;
+`;
+
+const ThankYouWrapper = styled.div`
+  display: flex;
+  height: 10vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  width: 100%;
+  animation: ${xFadeIn} 150ms ease-in-out;
 `;
