@@ -8,20 +8,20 @@ import SignUpModal from "./signUpModal/SignUpModal";
 const DesktopPage = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
 
-//   const data = useStaticQuery(graphql`
-//     query MyQuery {
-//       allFile(filter: { name: { in: "hero" } }) {
-//         edges {
-//           node {
-//             id
-//             childImageSharp {
-//               gatsbyImageData
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allFile(filter: { name: { in: "hero" } }) {
+        edges {
+          node {
+            id
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <DesktopWrapper>
@@ -36,7 +36,7 @@ const DesktopPage = () => {
           </p>
         </TopContainer>
         <ImgContainer>
-          {/* <HeroImage data={data}/> */}
+          <HeroImage data={data}/>
           <Logo />
         </ImgContainer>
         <BottomContainer>
