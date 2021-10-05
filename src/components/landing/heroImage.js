@@ -2,21 +2,7 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { StaticQuery, graphql } from "gatsby"
 const HeroImage = ({  device }) => {
-//   const data = useStaticQuery(graphql`
-//   query MyQuery {
-//     allFile(filter: { name: { in: "hero" } }) {
-//       edges {
-//         node {
-//           id
-//           childImageSharp {
-//             gatsbyImageData
-//           }
-//         }
-//       }
-//     }
-//   }
-// `);
-  // const image = getImage(data.allFile.edges[0].node);
+
   
 
     return (
