@@ -17,7 +17,7 @@ const DesktopPage = () => {
           </p>
           <h1>Opening Summer</h1>
           <p>
-          <strong><a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTTBISTROT.COM.AU</a></strong>
+          <strong><a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTBISTROT.COM.AU</a></strong>
           </p>
         </TopContainer>
         <ImgContainer>

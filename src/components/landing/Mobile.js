@@ -61,7 +61,7 @@ const MobilePage = () => {
             300 SMITH STREET, COLLINGWOOD
           </p>
           <p>
-        <a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTTBISTROT.COM.AU</a>
+        <a href="mailto:info@smithstbistrot.com.au">INFO@SMITHSTBISTROT.COM.AU</a>
           </p>
           </div>
         </BottomContainer>
