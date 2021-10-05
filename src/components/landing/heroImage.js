@@ -1,39 +1,32 @@
-import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { StaticQuery, graphql } from "gatsby"
-const HeroImage = ({  device }) => {
+import React from 'react'
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+const HeroImage = () => {
 
-  
+      
 
-    return (
-      <StaticQuery
-      query={graphql`
-      query MyQuery {
-        allFile(filter: { name: { in: "hero" } }) {
-          edges {
-            node {
-              id
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
+const data = useStaticQuery(graphql`
+query MyQuery {
+  allFile(filter: {name: {in: "hero"}}) {
+    edges {
+      node {
+        id
+        childImageSharp {
+          gatsbyImageData
         }
       }
-      `}
-      render={data => (
-        <GatsbyImage
-        image={getImage(data.allFile.edges[0].node.childImageSharp)}
-        alt="bleh"
-        style={{ width: `100%`, maxHeight: `100%`, aspectRatio: device === 'mob' ? `1/1` : ``}}
-        
-      />
-      )}
-    />
+    }
+  }
+}
+
+`)
+
+const image = getImage(data.allFile.edges[0].node.childImageSharp)
+    return (
+   
+       <GatsbyImage image={image} alt="bleh" style={{width: `100%`,  maxHeight: `100%`}}/>
      
-    );
-  
-};
+    )
+}
 
-export default HeroImage;
-
+export default HeroImage
