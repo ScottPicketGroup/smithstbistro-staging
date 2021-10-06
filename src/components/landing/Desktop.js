@@ -108,7 +108,7 @@ const BottomContainer = styled.div`
 const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 50%;
   :hover {
     cursor: pointer;
 }
