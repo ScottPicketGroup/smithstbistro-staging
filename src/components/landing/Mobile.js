@@ -47,7 +47,15 @@ const MobilePage = () => {
                 borderBottom: `black 1px solid`,
               }}
             >
-             and{" "} for exclusive first access to bookings
+             Group and{" "} for exclusive first access 
+            </p>
+            <p
+              style={{
+                textAlign: `center`,
+                borderBottom: `black 1px solid`,
+              }}
+            >
+            to bookings
             </p>
           </SignUpWrapper>
           <div style={{
