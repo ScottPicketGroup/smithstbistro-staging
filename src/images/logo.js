@@ -42,4 +42,5 @@ transition: all 200ms ease-in-out;
 &:hover {
     transform: translateY(2px) scale(1.05);
 }
+@media (min-width: 450px) {display:none;}
 `;
