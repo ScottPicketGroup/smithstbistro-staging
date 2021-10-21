@@ -31,7 +31,9 @@ const MobilePage = () => {
           
         </ImgContainer>
         <BottomContainer>
-        
+         <MobileVoucherLink href="https://apps.giverapp.net/smithstbistrot" rel="norefferer" target="_blank">
+          <p>GIFT VOUCHERS</p>
+        </MobileVoucherLink>
           <SignUpWrapper onClick={() => setModalOpen(!modalOpen)}>
             <p
               style={{
@@ -163,3 +165,17 @@ const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const MobileVoucherLink = styled.a`
+text-decoration: none;
+background: none;
+border: 1px solid black;
+color: black;
+p{
+    font-size: .75rem !important;
+}
+padding: .75rem 2rem;
+font-weight: bold;
+@media (min-width: 450px) {
+  display:none;
+}
+`
