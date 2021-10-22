@@ -19,10 +19,10 @@ display:flex;
 flex-direction: column;
 align-items: center;
 width: 56%;
-height: 50%;
+
 position: absolute;
 z-index: 2;
-margin-top: 5rem;
+
 svg {
     width: 100%;
     height: 100%;
