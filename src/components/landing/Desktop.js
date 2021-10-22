@@ -22,7 +22,8 @@ const DesktopPage = () => {
         </TopContainer>
         <ImgContainer>
           <HeroImage />
-          <Logo />
+          <Logo modalOpen={modalOpen}/>
+          <GVWrapper href="https://apps.giverapp.net/smithstbistrot" rel="norefferer" target="_blank"><p>Gift Vouchers</p></GVWrapper>
         </ImgContainer>
         <BottomContainer>
           <h1>Wine & Food</h1>
@@ -135,4 +136,23 @@ const ImgContainer = styled.div`
   @media screen and (max-width: 450px) {
     width: 100vw;
   }
+`;
+
+export const GVWrapper = styled.a`
+text-decoration: none;
+background: whitesmoke;
+color: inherit;
+position: absolute;
+bottom: 17vh;
+p{
+    font-size: 1.25rem !important;
+}
+padding: .65rem 1.75rem;
+font-weight: bold;
+justify-content: flex-end;
+transition: all 200ms ease-in-out;
+&:hover {
+    transform: translateY(2px) scale(1.05);
+}
+@media (max-width: 450px) {display:none;}
 `;
