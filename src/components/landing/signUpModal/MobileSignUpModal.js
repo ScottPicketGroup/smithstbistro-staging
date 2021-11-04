@@ -176,6 +176,13 @@ const LogoWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 6.75rem;
   justify-content: center;
+    @media not all and (min-resolution:.001dpcm) { 
+    @media {
+        
+           margin-bottom: 12rem;
+     
+    }
+}
 `;
 
 const SignUpWrapper = styled.form`
